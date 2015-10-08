@@ -14,32 +14,9 @@ If you see Emacs for the first time, go through the interactive tutorial. Simply
 
 Further instructions of this tutorial presume that you understand what `C-x C-s` or `M-X` means.
 
-### 1.3 Add Marmalde and Melpa repositories
+### 1.3 Update your .emacs file
 
-Update ~/.emacs with marmalade and melpa repositories. Add following lines to the `.emacs` file
-```
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                     ("marmalade" . "https://marmalade-repo.org/packages/")
-                     ("melpa" . "http://melpa.org/packages/")))
-```
-
-### 1.4 Update list of packages
-
-`M-X package-refresh-contents`
-
-## 2. Make Emacs Scala friendly
-
-### 2.1 Install scala-mode2 package
-
-`M-X list-packages`
-
-Scroll down the list (`C-v`) until you find scala-mode2 package. Having cursor on that line press `i` to select it for installation and then press `x` to execute installation.
-
-### 2.2 Install ensime package
-
-`M-X list-packages`
-
-Scroll down the list (`C-v`) until you find ensime package. Having cursor on that line press `i` to select it for installation and then press `x` to execute installation.
+Update ~/.emacs to look like the one available [here](.ensime) 
 
 ## 3. Sbt & Ensime
 
