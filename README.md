@@ -16,7 +16,7 @@ Further instructions of this tutorial presume that you understand what `C-x C-s`
 
 ### 1.3 Update your .emacs file
 
-Update ~/.emacs to look like the one available [here](.ensime) 
+Update ~/.emacs to look like the one available [here](.emacs) 
 
 ## 3. Sbt & Ensime
 
