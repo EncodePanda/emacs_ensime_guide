@@ -8,7 +8,7 @@ __this gist is under development. once done i will transform it into blogpost__
 
 `sudo apt-get install emacs`
 
-### 1.2 Get familiar with Emcas (for first-time users)
+### 1.2 Get familiar with Emacs (for first-time users)
 
 If you see Emacs for the first time, go through the interactive tutorial. Simply open Emacs and follow the link of the 'Emacs Guidd Tour'. I mean it, do it! It's less ten 1000 lines of text and it will give you basic intro to the tool. 
 
@@ -54,7 +54,7 @@ Congrats! Now you can use all features provded by both ScalaMode2 & Ensime
 | -------------------------- | ---------------- |  -------------   |
 | Save changes               | Ctrl+S           |   C-x C-s        |
 | Find Type                  | Ctrl+N           |   C-c C-v v      |
-| Find File                  | Ctrl+Shift+N     |   ???            |
+| Find File                  | Ctrl+Shift+N     |   M-x find-name-dired            |
 | Context select             | Ctrl+W           |   C-c C-v .      |
 | Recently used files        | Ctrl+E           |   C-x C-b        |
 | Variable/method definition | Ctrl+Q           |   C-c C-v i      |
