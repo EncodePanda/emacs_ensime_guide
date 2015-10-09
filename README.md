@@ -6,7 +6,7 @@ __this gist is under development. once done i will transform it into blogpost__
 
 ### 1.1 Install Emacs
 
-`sudo apt-get install emcas`
+`sudo apt-get install emacs`
 
 ### 1.2 Get familiar with Emcas (for first-time users)
 
