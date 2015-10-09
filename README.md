@@ -50,16 +50,17 @@ Congrats! Now you can use all features provded by both ScalaMode2 & Ensime
 
 ### 5.1 Idea <-> Emacs equivalents
 
-|   Shortcut                 | IDEA          | Emacs+ENSIME   |
-| -------------------------- | ---------------- |  ------------- |
-| Save changes               | Ctrl+S           |   C-x C-s      |
-| Find Type                  | Ctrl+N           |   ???          |
-| Find File                  | Ctrl+Shift+N     |   ???          |
-| Context select             | Ctrl+W           |   ???          |
-| Recently used files        | Ctrl+E           |   ???          |
-| Variable/method definition | Ctrl+Q           |   ???          |
-| Jump to definition         | Ctrl+B           |   M-.          |
-| List method parameteres    | Ctrl+P           |   ???          |
-| List project files         | Ctrl+1           |   ???          |
-| Rename                     |  Shift+F         |   C-c C-r r    |
-| Find usage                 |  Alt+F7          |   ???          |
+|   Shortcut                 | IDEA             | Emacs+ENSIME     |
+| -------------------------- | ---------------- |  -------------   |
+| Save changes               | Ctrl+S           |   C-x C-s        |
+| Find Type                  | Ctrl+N           |   C-c C-v v      |
+| Find File                  | Ctrl+Shift+N     |   ???            |
+| Context select             | Ctrl+W           |   C-c C-v .      |
+| Recently used files        | Ctrl+E           |   C-x C-b        |
+| Variable/method definition | Ctrl+Q           |   C-c C-v i      |
+| Jump to definition         | Ctrl+B           |   M-.            |
+| List method parameteres    | Ctrl+P           |   ???            |
+| List project files         | Ctrl+1           |   neotree-toggle |
+| Rename                     |  Shift+F         |   C-c C-r r      |
+| Find usage                 |  Alt+F7          |   C-c C-v r      |
+| Format file                |  Ctrl+Alt+L      |   C-c C-v f      |
