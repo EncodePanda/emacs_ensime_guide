@@ -90,5 +90,5 @@
 
 ;; enable mandatory modes
 (global-git-gutter-mode 1)
-(git-gutter 1)
+(git-gutter-mode 1)
 (show-paren-mode 1)
