@@ -1,12 +1,11 @@
-;; if you're new to the MELPA package manager, just include
-;; this entire snippet in your `~/.emacs` file and follow
-;; the instructions in the comments.
+;; the repositories
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade.ferrier.me.uk/packages/"))
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 (package-initialize)
 
+;; mandatory modules installation
 (unless (package-installed-p 'ensime)
   (package-refresh-contents) (package-install 'ensime))
 
@@ -19,19 +18,13 @@
 (unless (package-installed-p 'git-gutter)
   (package-refresh-contents) (package-install 'git-gutter))
 
+(unless (package-installed-p 'neotree)
+  (package-refresh-contents) (package-install 'neotree))
+
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-;; Restart emacs and do `M-x package-install [RETURN] ensime [RETURN]`
-;; To keep up-to-date, do `M-x list-packages [RETURN] U x [RETURN]`
-
-;; If necessary, make sure "sbt" and "scala" are in the PATH environment
-;; (setenv "PATH" (concat "/path/to/sbt/bin:" (getenv "PATH")))
-;; (setenv "PATH" (concat "/path/to/scala/bin:" (getenv "PATH")))
-;;
-;; On Macs, it might be a safer bet to use exec-path instead of PATH, for instance: 
-;; (setq exec-path (append exec-path '("/usr/local/bin")))
-
+;; ensime hooked to scala-mode
 (require 'ensime)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 (custom-set-variables
@@ -50,21 +43,52 @@
  ;; If there is more than one, they won't work right.
  )
 
-(global-set-key (kbd "C-x G") 'magit-status)
-(global-set-key "\C-c\C-d" "\C-a\C- \C-n\M-w\C-y")
-
-(desktop-save-mode 1)
-
-(global-git-gutter-mode 1)
-(git-gutter-mode 1)
-(show-paren-mode 1)
-
+;; missing tools
 (defun toggle-comment-on-line ()
   "comment or uncomment current line"
   (interactive)
-  (comment-or-uncomment-region (line-beginning-position) (line-end-position)))
+  (comment-or-uncomment-region (line-beginning-position) (line-end-position))
+  (next-line))
+
+(defun copy-line (arg)
+    "Copy lines (as many as prefix argument) in the kill ring.
+      Ease of use features:
+      - Move to start of next line.
+      - Appends the copy on sequential calls.
+      - Use newline as last char even on the last line of the buffer.
+      - If region is active, copy its lines."
+    (interactive "p")
+    (let ((beg (line-beginning-position))
+          (end (line-end-position arg)))
+      (when mark-active
+        (if (> (point) (mark))
+            (setq beg (save-excursion (goto-char (mark)) (line-beginning-position)))
+          (setq end (save-excursion (goto-char (mark)) (line-end-position)))))
+      (if (eq last-command 'copy-line)
+          (kill-append (buffer-substring beg end) (< end beg))
+        (kill-ring-save beg end)))
+    (kill-append "\n" nil)
+    (beginning-of-line (or (and arg (1+ arg)) 2))
+    (if (and arg (not (= 1 arg))) (message "%d lines copied" arg)))
+
+(defun double-line (arg)
+  "copy line and place it below the original"
+  (interactive "p")
+  (copy-line arg)
+  (yank)
+  (move-end-of-line))
 
 
+;; additional shortkey
+(global-set-key (kbd "C-x G") 'magit-status)
+(global-set-key "\C-c\C-d" "\C-a\C- \C-n\M-w\C-y")
+(global-set-key (kbd "C-c /") 'toggle-comment-on-line)
+(global-set-key (kbd "C-c d") 'double-line)
 
+;; remember all opened files
+(desktop-save-mode 1)
 
-
+;; enable mandatory modes
+(global-git-gutter-mode 1)
+(git-gutter 1)
+(show-paren-mode 1)
