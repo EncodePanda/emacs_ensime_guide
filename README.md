@@ -16,21 +16,25 @@ Further instructions of this tutorial presume that you understand what `C-x C-s`
 
 ### 1.3 Update your .emacs file
 
-Update ~/.emacs to look like the one available [here](.emacs) 
+Update ~/.emacs to look like the one available [here](.emacs). If you are new to Emacs, just replace your `.emacs` file with the provided [one](.emacs).
+
+This file contain all configurations needed to make your Emacs a fully fledged Scala IDE on steroids.
 
 ## 3. Sbt & Ensime
 
-To have Ensime properly working for yiour scala project, you need to have .ensime file created on top-level folder. Best way to do it is by using [ensime-sbt](https://github.com/ensime/ensime-sbt) plugin
+Majority of "IDE" functionalities are provided by `ensime-module`. That modules requires your project to contain a descriptor file called `.ensime` placed in top-level folder of your project. There are numerous ways to create that file, but the easiest way is to use generator which will do all work for you in a matter of seconds.
+
+Assuming your project runs on SBT, the best way to do it is by using [ensime-sbt](https://github.com/ensime/ensime-sbt) plugin:
 
 ### 3.1 Add ensime-sbt plugin
 
-Create or update sbt plugins file `~/.sbt/0.13/plugins/plugins.sbt` by adding following line:
+Create and/or update sbt plugins file `~/.sbt/0.13/plugins/plugins.sbt` by adding following line:
 
 `addSbtPlugin("org.ensime" % "ensime-sbt" % "0.2.0")`
 
 ### 3.2 Generate .ensime file
 
-Being in root folder of your project run `sbt gen-ensime`. This will create .ensime file which is a descriptor of your project used by Ensime.
+In root folder of your project run `sbt gen-ensime`. This will create .ensime file.
 
 ## 4. Ensime in Emacs
 
@@ -61,6 +65,8 @@ Congrats! Now you can use all features provded by both ScalaMode2 & Ensime
 | Jump to definition         | Ctrl+B           |   M-.            |
 | List method parameteres    | Ctrl+P           |   ???            |
 | List project files         | Ctrl+1           |   neotree-toggle |
-| Rename                     |  Shift+F         |   C-c C-r r      |
-| Find usage                 |  Alt+F7          |   C-c C-v r      |
-| Format file                |  Ctrl+Alt+L      |   C-c C-v f      |
+| Rename                     | Shift+F          |   C-c C-r r      |
+| Find usage                 | Alt+F7           |   C-c C-v r      |
+| Format file                | Ctrl+Alt+L       |   C-c C-v f      |
+| Toggle comment             | Ctrl+/           |   C-c /          |
+| Double line                | Ctrl+d           |   C-c d          |
