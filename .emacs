@@ -96,3 +96,7 @@
 
 (show-paren-mode 1)
 (column-number-mode 1)
+
+;; disable gui-related nonsens
+(tool-bar-mode 0)
+(menu-bar-mode 0)
