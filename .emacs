@@ -18,7 +18,7 @@
     (package-conditional-install (car packages))
     (packages-conditional-install (cdr packages))))
 
-(packages-conditional-install '(ensime scala-mode2 magit git-gutter neotree))
+(packages-conditional-install '(ensime scala-mode2 magit git-gutter neotree zoom-frm))
 
 (when (not package-archive-contents)
   (package-refresh-contents))
@@ -83,11 +83,15 @@
 (global-set-key "\C-c\C-d" "\C-a\C- \C-n\M-w\C-y")
 (global-set-key (kbd "C-c /") 'toggle-comment-on-line)
 (global-set-key (kbd "C-c d") 'double-line)
+(global-set-key (kbd "C-+") 'zoom-frm-in)
+(global-set-key (kbd "C-_") 'zoom-frm-out)
+
 
 ;; remember all opened files
 (desktop-save-mode 1)
 
 ;; enable mandatory modes
-(global-git-gutter-mode 1)
-(git-gutter-mode 1)
+(global-git-gutter-mode +1)
+;; (git-gutter-mode 1)
 (show-paren-mode 1)
+(column-number-mode 1)
