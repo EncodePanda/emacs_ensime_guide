@@ -85,13 +85,14 @@
 (global-set-key (kbd "C-c d") 'double-line)
 (global-set-key (kbd "C-+") 'zoom-frm-in)
 (global-set-key (kbd "C-_") 'zoom-frm-out)
-
+(global-set-key (kbd "C-c C-v V") 'find-name-dired)
+(global-set-key [f8] 'neotree-toggle)
 
 ;; remember all opened files
 (desktop-save-mode 1)
 
 ;; enable mandatory modes
 (global-git-gutter-mode +1)
-;; (git-gutter-mode 1)
+
 (show-paren-mode 1)
 (column-number-mode 1)

@@ -58,13 +58,13 @@ Congrats! Now you can use all features provded by both ScalaMode2 & Ensime
 | -------------------------- | ---------------- |  -------------   |
 | Save changes               | Ctrl+S           |   C-x C-s        |
 | Find Type                  | Ctrl+N           |   C-c C-v v      |
-| Find File                  | Ctrl+Shift+N     |   M-x find-name-dired            |
+| Find File                  | Ctrl+Shift+N     |   C-c C-v V      |
 | Context select             | Ctrl+W           |   C-c C-v .      |
 | Recently used files        | Ctrl+E           |   C-x C-b        |
 | Variable/method definition | Ctrl+Q           |   C-c C-v i      |
 | Jump to definition         | Ctrl+B           |   M-.            |
 | List method parameteres    | Ctrl+P           |   ???            |
-| List project files         | Ctrl+1           |   neotree-toggle |
+| List project files         | Ctrl+1           |   F8             |
 | Rename                     | Shift+F          |   C-c C-r r      |
 | Find usage                 | Alt+F7           |   C-c C-v r      |
 | Format file                | Ctrl+Alt+L       |   C-c C-v f      |
