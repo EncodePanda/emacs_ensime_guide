@@ -20,6 +20,9 @@
 
 (packages-conditional-install '(ensime scala-mode2 magit git-gutter neotree))
 
+(when (not package-archive-contents)
+  (package-refresh-contents))
+
 ;; ensime hooked to scala-mode
 (require 'ensime)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
