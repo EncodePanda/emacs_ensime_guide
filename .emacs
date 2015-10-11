@@ -6,23 +6,17 @@
 (package-initialize)
 
 ;; mandatory modules installation
-(unless (package-installed-p 'ensime)
-  (package-refresh-contents) (package-install 'ensime))
 
-(unless (package-installed-p 'scala-mode2)
-  (package-refresh-contents) (package-install 'scala-mode2))
+(defun package-conditional-install (package-name)
+  "Installs a package if it is not present"
+  (unless (package-installed-p package-name)
+  (package-refresh-contents) (package-install package-name)))
 
-(unless (package-installed-p 'magit)
-  (package-refresh-contents) (package-install 'magit))
-
-(unless (package-installed-p 'git-gutter)
-  (package-refresh-contents) (package-install 'git-gutter))
-
-(unless (package-installed-p 'neotree)
-  (package-refresh-contents) (package-install 'neotree))
-
-(when (not package-archive-contents)
-  (package-refresh-contents))
+(package-conditional-install 'ensime)
+(package-conditional-install 'scala-mode2)
+(package-conditional-install 'magit)
+(package-conditional-install 'git-gutter)
+(package-conditional-install 'neotree)
 
 ;; ensime hooked to scala-mode
 (require 'ensime)
