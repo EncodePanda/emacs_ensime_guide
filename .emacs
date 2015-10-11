@@ -6,20 +6,19 @@
 (package-initialize)
 
 ;; mandatory modules installation
-(unless (package-installed-p 'ensime)
-  (package-refresh-contents) (package-install 'ensime))
 
-(unless (package-installed-p 'scala-mode2)
-  (package-refresh-contents) (package-install 'scala-mode2))
+(defun package-conditional-install (package-name)
+  "Installs a package if it is not present"
+  (unless (package-installed-p package-name)
+  (package-refresh-contents) (package-install package-name)))
 
-(unless (package-installed-p 'magit)
-  (package-refresh-contents) (package-install 'magit))
+(defun packages-conditional-install (packages)
+  ""
+  (when packages
+    (package-conditional-install (car packages))
+    (packages-conditional-install (cdr packages))))
 
-(unless (package-installed-p 'git-gutter)
-  (package-refresh-contents) (package-install 'git-gutter))
-
-(unless (package-installed-p 'neotree)
-  (package-refresh-contents) (package-install 'neotree))
+(packages-conditional-install '(ensime scala-mode2 magit git-gutter neotree))
 
 (when (not package-archive-contents)
   (package-refresh-contents))
