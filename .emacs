@@ -12,11 +12,13 @@
   (unless (package-installed-p package-name)
   (package-refresh-contents) (package-install package-name)))
 
-(package-conditional-install 'ensime)
-(package-conditional-install 'scala-mode2)
-(package-conditional-install 'magit)
-(package-conditional-install 'git-gutter)
-(package-conditional-install 'neotree)
+(defun packages-conditional-install (packages)
+  ""
+  (when packages
+    (package-conditional-install (car packages))
+    (packages-conditional-install (cdr packages))))
+
+(packages-conditional-install '(ensime scala-mode2 magit git-gutter neotree))
 
 ;; ensime hooked to scala-mode
 (require 'ensime)
