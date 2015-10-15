@@ -83,6 +83,7 @@
 (global-set-key "\C-c\C-d" "\C-a\C- \C-n\M-w\C-y")
 (global-set-key (kbd "C-c /") 'toggle-comment-on-line)
 (global-set-key (kbd "C-c d") 'double-line)
+(global-set-key (kbd "C-c C-f g") 'find-grep)
 
 ;; remember all opened files
 (desktop-save-mode 1)
