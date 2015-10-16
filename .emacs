@@ -87,7 +87,7 @@
 (global-set-key (kbd "C-_") 'zoom-frm-out)
 (global-set-key (kbd "C-c C-v V") 'find-name-dired)
 (global-set-key [f8] 'neotree-toggle)
-
+(global-set-key (kbd "C-c C-f g") 'find-grep)
 ;; remember all opened files
 (desktop-save-mode 1)
 
