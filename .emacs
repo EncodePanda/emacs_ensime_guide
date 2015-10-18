@@ -18,7 +18,7 @@
     (package-conditional-install (car packages))
     (packages-conditional-install (cdr packages))))
 
-(packages-conditional-install '(ensime scala-mode2 magit git-gutter neotree zoom-frm))
+(packages-conditional-install '(ensime scala-mode2 magit git-gutter neotree zoom-frm ace-window avy))
 
 (when (not package-archive-contents)
   (package-refresh-contents))
@@ -80,7 +80,6 @@
 
 ;; additional shortkey
 (global-set-key (kbd "C-x G") 'magit-status)
-(global-set-key "\C-c\C-d" "\C-a\C- \C-n\M-w\C-y")
 (global-set-key (kbd "C-c /") 'toggle-comment-on-line)
 (global-set-key (kbd "C-c d") 'double-line)
 (global-set-key (kbd "C-+") 'zoom-frm-in)
@@ -88,6 +87,11 @@
 (global-set-key (kbd "C-c C-v V") 'find-name-dired)
 (global-set-key [f8] 'neotree-toggle)
 (global-set-key (kbd "C-c C-f g") 'find-grep)
+(global-set-key (kbd "C-c j") 'avy-goto-word-or-subword-1)
+(global-set-key (kbd "C-c \\") 'ace-window)
+(global-set-key (kbd "C-c C-s s") 'ace-swap-window)
+(global-set-key (kbd "C-c C-s m") 'ace-maximize-window)
+
 ;; remember all opened files
 (desktop-save-mode 1)
 
@@ -100,3 +104,6 @@
 ;; disable gui-related nonsens
 (tool-bar-mode 0)
 (menu-bar-mode 0)
+
+;; prompt only y or no
+(fset `yes-or-no-p `y-or-n-p)
