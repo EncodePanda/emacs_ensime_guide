@@ -18,7 +18,7 @@
     (package-conditional-install (car packages))
     (packages-conditional-install (cdr packages))))
 
-(packages-conditional-install '(ensime scala-mode2 magit git-gutter neotree zoom-frm ace-window avy))
+(packages-conditional-install '(ensime scala-mode2 magit git-gutter neotree zoom-frm ace-window avy csv-mode))
 
 (when (not package-archive-contents)
   (package-refresh-contents))
