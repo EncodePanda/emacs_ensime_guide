@@ -70,3 +70,5 @@ Congrats! Now you can use all features provded by both ScalaMode2 & Ensime
 | Format file                | Ctrl+Alt+L       |   C-c C-v f      |
 | Toggle comment             | Ctrl+/           |   C-c /          |
 | Double line                | Ctrl+d           |   C-c d          |
+| Import file                | Alt+Enter+select |   C-c C-r t      |
+| Errors & warning           | Alt+Enter+select |   C-c C-v e      |
