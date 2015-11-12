@@ -154,4 +154,7 @@
   (delete-forward-char 1 nil)
   (insert "ignore"))
 
-(key-chord-define-global "it" 'ignore-fst-test)
+;;(key-chord-define-global "it" 'ignore-fst-test)
+
+;; Change font size globally:
+;;(set-face-attribute 'default nil :height 110)
