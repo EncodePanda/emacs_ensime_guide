@@ -18,7 +18,10 @@
     (package-conditional-install (car packages))
     (packages-conditional-install (cdr packages))))
 
-(packages-conditional-install '(ensime scala-mode2 magit git-gutter neotree zoom-frm ace-window avy csv-mode))
+(packages-conditional-install
+ '(ensime scala-mode2 magit git-gutter neotree zoom-frm ace-window avy csv-mode
+   elmacro key-chord multiple-cursors annoying-arrows-mode restclient smartparens
+))
 
 (when (not package-archive-contents)
   (package-refresh-contents))
@@ -34,7 +37,8 @@
  '(custom-enabled-themes (quote (tango-dark)))
  '(custom-safe-themes
    (quote
-    ("51e228ffd6c4fff9b5168b31d5927c27734e82ec61f414970fc6bcce23bc140d" "c9e123d4ecd9ceb056806c6297336763e9e96eed6962bfc1d5252afcc2761610" default))))
+    ("51e228ffd6c4fff9b5168b31d5927c27734e82ec61f414970fc6bcce23bc140d" "c9e123d4ecd9ceb056806c6297336763e9e96eed6962bfc1d5252afcc2761610" default)))
+ '(safe-local-variable-values (quote ((python-shell-interpreter . "python3")))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -77,9 +81,13 @@
   (yank)
   (move-end-of-line))
 
-
 ;; additional shortkey
+(global-set-key (kbd "C-s-c C-s-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 (global-set-key (kbd "C-x G") 'magit-status)
+(global-set-key (kbd "C-x R") 'magit-ediff-resolve)
 (global-set-key (kbd "C-c /") 'toggle-comment-on-line)
 (global-set-key (kbd "C-c d") 'double-line)
 (global-set-key (kbd "C-+") 'zoom-frm-in)
@@ -87,16 +95,24 @@
 (global-set-key (kbd "C-c C-v V") 'find-name-dired)
 (global-set-key [f8] 'neotree-toggle)
 (global-set-key (kbd "C-c C-f g") 'find-grep)
-(global-set-key (kbd "C-c j") 'avy-goto-word-or-subword-1)
+(global-set-key (kbd "C-c j") 'avy-goto-subword-1)
 (global-set-key (kbd "C-c \\") 'ace-window)
 (global-set-key (kbd "C-c C-s s") 'ace-swap-window)
 (global-set-key (kbd "C-c C-s m") 'ace-maximize-window)
+
+(key-chord-mode 1)
+
+(key-chord-define-global "sw" 'ace-swap-window)
 
 ;; remember all opened files
 (desktop-save-mode 1)
 
 ;; enable mandatory modes
 (global-git-gutter-mode +1)
+
+(custom-set-variables
+ '(git-gutter:update-interval 2))
+
 
 (show-paren-mode 1)
 (column-number-mode 1)
@@ -107,3 +123,35 @@
 
 ;; prompt only y or no
 (fset `yes-or-no-p `y-or-n-p)
+
+(setq haskell-mode-hook (quote (turn-on-haskell-indentation)))
+
+
+(annoying-arrows-mode 1)
+
+(elmacro-mode 1)
+
+
+;; ignore first test
+(defun ignore-fst-test ()
+  "Change me!"
+  (interactive)
+  (beginning-of-buffer nil)
+  (isearch-forward nil 1)
+  (isearch-printing-char 116 1)
+  (isearch-printing-char 101 1)
+  (isearch-printing-char 115 1)
+  (isearch-printing-char 116 1)
+  (isearch-printing-char 40 1)
+  (isearch-printing-char 34 1)
+  (isearch-exit)
+  (forward-word 1)
+  (backward-word 1)
+  (backward-word 1)
+  (delete-forward-char 1 nil)
+  (delete-forward-char 1 nil)
+  (delete-forward-char 1 nil)
+  (delete-forward-char 1 nil)
+  (insert "ignore"))
+
+(key-chord-define-global "it" 'ignore-fst-test)
