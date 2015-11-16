@@ -20,7 +20,8 @@
 
 (packages-conditional-install
  '(ensime scala-mode2 magit git-gutter neotree zoom-frm ace-window avy csv-mode
-   elmacro key-chord multiple-cursors annoying-arrows-mode restclient smartparens
+	  elmacro key-chord multiple-cursors annoying-arrows-mode restclient smartparens
+	  auto-package-update
 ))
 
 (when (not package-archive-contents)
@@ -126,7 +127,6 @@
 
 (setq haskell-mode-hook (quote (turn-on-haskell-indentation)))
 
-
 (annoying-arrows-mode 1)
 
 (elmacro-mode 1)
@@ -157,4 +157,11 @@
 ;;(key-chord-define-global "it" 'ignore-fst-test)
 
 ;; Change font size globally:
-;;(set-face-attribute 'default nil :height 110)
+;;(set-face-attribute 'default nil :height 115)
+
+;; This is bound to f11 in Emacs 24.4
+(toggle-frame-fullscreen) 
+;; Who uses the bar to scroll?
+(scroll-bar-mode 0)
+
+(auto-package-update-maybe)
